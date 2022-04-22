@@ -14,19 +14,19 @@
 
 ## 示例1
 
-输入
+### 输入
 ```
 abc
 123456789
 ```
-输出
+### 输出
 
 ```
 abc00000
 12345678
 90000000
 ```
-代码
+## 代码
 ```Java
 public class HJ4 {
     public static void main(String[] args) {
