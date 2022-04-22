@@ -9,7 +9,6 @@ public class HJ4 {
             int i1 = s.length() % 8;
             String s1 = s + zero.substring(i1);
             int i2 = s1.length() % 8;
-
             for (int i = 0; i < s.length() % 8 + 1; i++) {
                 String substring = s.substring(i * 8, (i + 1) * 8);
                 if (substring.length() < 8) {
@@ -18,7 +17,5 @@ public class HJ4 {
                 System.out.println(substring);
             }
         }
-
-
     }
 }
