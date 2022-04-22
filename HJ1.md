@@ -2,49 +2,87 @@
 
 ### 题目描述
 
-*   连续输入字符串，请按长度为8拆分每个字符串后输出到新的字符串数组； •长度不是8整数倍的字符串请在后面补数字0，空字符串不处理。
+*   密码要求:
+
+    1.长度超过8位
+
+    2.包括大小写字母.数字.其它符号,以上四种至少三种
+
+    3.不能有相同长度超2的子串重复
+
+    说明:长度超过2的子串
 
 ### 输入描述:
 
-+   连续输入字符串(输入2次,每个字符串长度小于100)
++   一组或多组长度超过2的子符串。每组占一行
 
 ### 输出描述:
 
-*   输出到长度为8的新字符串数组
+*   如果符合要求输出：OK，否则输出NG
 
 ### 示例1
 
 #### 输入
 ```
-abc
-123456789
+021Abc9000 021Abc9Abc1 021ABC9000 021$bc9000
 ```
 #### 输出
 
 ```
-abc00000
-12345678
-90000000
+OK NG NG OK
 ```
 ### 代码
 ```Java
-public class HJ4 {
+public class HJ20 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        while (scanner.hasNext()) {
-            String s = scanner.nextLine();
-            String zero = "00000000";
-            int i1 = s.length() % 8;
-            String s1 = s + zero.substring(i1);
-            int i2 = s1.length() % 8;
-            for (int i = 0; i < s.length() % 8 + 1; i++) {
-                String substring = s.substring(i * 8, (i + 1) * 8);
-                if (substring.length() < 8) {
-                    substring = substring + zero.substring(substring.length());
-                }
-                System.out.println(substring);
+        while (scanner.hasNextLine()) {
+            String str = scanner.nextLine();
+            if (str.length() < 8 || !checkSpecialChar(str) || checkCommonStr(str)) {
+                System.out.println("NG");
+            } else {
+                System.out.println("OK");
             }
         }
+    }
+
+    private static boolean checkCommonStr(String str) {
+        for (int i = 0; i < str.length() - 3; i++) {
+            String substring = str.substring(i, i + 2);
+            String sub = str.substring(i + 1);
+            if (sub.contains(substring)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean checkSpecialChar(String str) {
+        int lowChar = 0;
+        int upperChar = 0;
+        int numChar = 0;
+        int otherChar = 0;
+        char[] chars = str.toCharArray();
+        for (char c : chars) {
+            if (c >= 'a' && c <= 'z') {
+                if (lowChar == 0) {
+                    lowChar = 1;
+                }
+            } else if (c >= 'A' && c <= 'Z') {
+                if (upperChar == 0) {
+                    upperChar = 1;
+                }
+            } else if (c >= '0' && c <= '9') {
+                if (numChar == 0) {
+                    numChar = 1;
+                }
+            } else if (c != ' ' && c != '\n') {
+                if (otherChar == 0) {
+                    otherChar = 1;
+                }
+            }
+        }
+        return lowChar + upperChar + numChar + otherChar >= 3;
     }
 }
 ```
