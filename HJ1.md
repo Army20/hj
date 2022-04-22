@@ -32,6 +32,8 @@
 OK NG NG OK
 ```
 ### 思路
+
+
 ### 代码
 ```Java
 public class HJ20 {
@@ -87,4 +89,5 @@ public class HJ20 {
     }
 }
 ```
+
 ### 总结
