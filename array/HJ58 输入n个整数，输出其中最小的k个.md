@@ -107,7 +107,9 @@ public class HJ58 {
 ```Java
 public class Main {
     public static void main(String[] args) {
+        // 数组初始化
         Integer[] arr = new Integer[]{1,2,3,65,5};
+        // 降序排序
         Arrays.sort(arr, new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
