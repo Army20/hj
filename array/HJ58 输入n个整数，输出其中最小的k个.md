@@ -100,8 +100,10 @@ public class HJ58 {
 *  scanner.next:返回为string。以空格或者TAB 结束接收。
 *  https://blog.csdn.net/qq_41620270/article/details/120582910
 
-数组排序:升序：Arrays.sort(arr);
-数组排序：降序：new Comparator，实现compare方法。Comparator用于构造基本数据类型的比较器时，只能对基本类型的包装类进行排序，也就是说只能传入包装类的数组，这里我们需要首先把int[]转为Integer[]
+*   数组排序:升序：Arrays.sort(arr);
+
+*   数组排序：降序：new Comparator，实现compare方法。Comparator用于构造基本数据类型的比较器时，只能对基本类型的包装类进行排序，也就是说只能传入包装类的数组，这里我们需要首先把int[]转为Integer[]
+*   
 ```Java
 Integer[] arr = new Integer[n];
 Arrays.sort(arr, new Comparator<Integer>() {
