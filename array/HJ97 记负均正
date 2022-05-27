@@ -1,0 +1,95 @@
+## 牛客网-华为机试练习题 58
+
+### 题目描述
+
+*   输入n个整数，输出其中最小的k个。
+
+    本题有多组输入样例，请使用循环读入，比如while(cin>>)等方式处理
+
+### 输入描述:
+
++   第一行输入两个整数n和k
+    第二行输入一个整数数组
+
+### 输出描述:
+
+*  输出一个从小到大排序的整数数组
+
+### 示例1
+
+```
+输入：
+
+5 2
+1 3 5 7 2
+
+输出：
+1 2
+```
+### 思路
+*   
+### 代码
+
+```Java
+package com.example.hj;
+
+import java.text.DecimalFormat;
+import java.util.Scanner;
+
+/**
+ * 功能描述
+ *
+ * @author zWX1011101
+ * @since 2022-05-27
+ */
+public class HJ97 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNext()) {
+            int n = scanner.nextInt();
+            int negativeNumber = 0;
+            int positiveNumber = 0;
+            int positiveSum = 0;
+            for (int i = 0; i < n; i++) {
+                int num = scanner.nextInt();
+                if (num < 0) {
+                    negativeNumber++;
+                } else if (num > 0) {
+                    positiveNumber++;
+                    positiveSum += num;
+                } else {
+                    continue;
+                }
+            }
+            if (positiveSum == 0) {
+                System.out.println(negativeNumber + " " + 0.0);
+            } else {
+              /*  DecimalFormat decimalFormat = new DecimalFormat("0.0");
+                System.out.println(negativeNumber + " " + decimalFormat.format((float) positiveSum / positiveNumber));*/
+                System.out.println(negativeNumber + " " + String.format("%.1f", (float) positiveSum / positiveNumber));
+            }
+        }
+    }
+}
+
+
+```
+### 总结
+```Java  
+    
+    保留一位小数：
+    System.out.println(String.format("%.1f", 20f));
+    System.out.println(String.format("%f", 20f));
+    
+    输出：
+    0 20.0
+    0 20.000000
+    
+    保留一位小数：
+     DecimalFormat decimalFormat = new DecimalFormat("0.0");
+     System.out.println(decimalFormat.format(20.12));
+     
+     输出：
+     20.1
+```
+  
