@@ -42,6 +42,48 @@ NO
 ### 代码
 ```Java
 
+package com.example.hj;
+
+import java.util.Scanner;
+
+/**
+ * 功能描述
+ *
+ * @author zWX1011101
+ * @since 2022-05-30
+ */
+public class HJ90 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNext()) {
+            String s = scanner.nextLine();
+            String[] split = s.split("\\.");
+            boolean flag = true;
+            if (split.length != 4) {
+                flag = false;
+            } else {
+                for (int i = 0; i < split.length; i++) {
+                    if (split[i].trim().length() == 0 || (split[i].length() > 1 &&
+                            split[i].startsWith("0")) || Integer.parseInt(split[i]) < 0 || Integer.parseInt(split[i]) > 255) {
+                        flag = false;
+                        break;
+                    }
+                    if (Integer.parseInt(split[0]) == 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+            }
+
+            if (flag) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+    }
+}
+
 ```
 ### 总结
 *   
