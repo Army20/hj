@@ -37,7 +37,13 @@ NO
 
 ### 思路
 
-  
+不满足条件的情况：
+1. 长度不为4
+2. 某一项不为空
+3. 某一项长度大于1时，不能以”0“开头
+4. 某一项不介于[0,255]之间
+5. 某一项不以“+”开头。
+6. 首项不为0
   
 ### 代码
 ```Java
@@ -64,7 +70,7 @@ public class HJ90 {
             } else {
                 for (int i = 0; i < split.length; i++) {
                     if (split[i].trim().length() == 0 || (split[i].length() > 1 &&
-                            split[i].startsWith("0")) || Integer.parseInt(split[i]) < 0 || Integer.parseInt(split[i]) > 255) {
+                            split[i].startsWith("0")) || Integer.parseInt(split[i]) < 0 || Integer.parseInt(split[i]) > 255 || split[i].startsWith("+")) {
                         flag = false;
                         break;
                     }
@@ -83,6 +89,7 @@ public class HJ90 {
         }
     }
 }
+
 
 ```
 ### 总结
