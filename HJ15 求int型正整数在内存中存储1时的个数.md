@@ -51,16 +51,20 @@ import java.util.Scanner;
  * @author zWX1011101
  * @since 2022-04-24
  */
-public class HJ12 {
+public class HJ15 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()) {
-            String s = scanner.nextLine();
-            StringBuffer stringBuffer = new StringBuffer(s);
-            String reverseStr = stringBuffer.reverse().toString();
-            System.out.println(reverseStr);
+            int nextInt = scanner.nextInt();
+            String s = Integer.toBinaryString(nextInt);
+            int count=0;
+            for (int i = 0; i < s.length();i++) {
+                if (s.charAt(i)=='1') {
+                    count++;
+                }
+            }
+            System.out.println(count);
         }
-
     }
 }
 
